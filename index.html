@@ -112,7 +112,11 @@
             Fail ini ialah pakej Android. Selepas muat turun, buka fail tersebut
             dan benarkan pemasangan daripada pelayar jika telefon meminta.
           </p>
-          <a class="download" id="download" href="downloads/ovitrap.apk">
+          <a
+            class="download"
+            id="download"
+            href="https://naqiuddinsancon-arch.github.io/ovitrap-app/downloads/ovitrap.apk"
+          >
             Muat turun APK
           </a>
           <ol>
@@ -124,15 +128,13 @@
         <article class="card qr">
           <h2>Imbas untuk muat turun</h2>
           <div id="qr"></div>
-          <p class="file" id="link"></p>
         </article>
       </section>
     </main>
     <script src="qrcode.min.js"></script>
     <script>
-      const url = "https://github.com/naqiuddinsancon-arch/ovitrap-app/releases/download/v1.0.0/ovitrap.apk";
+      const url = "https://naqiuddinsancon-arch.github.io/ovitrap-app/downloads/ovitrap.apk";
       document.getElementById("download").href = url;
-      document.getElementById("link").textContent = url;
       new QRCode(document.getElementById("qr"), {
         text: url,
         width: 220,
