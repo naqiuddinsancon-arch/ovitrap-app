@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Muat turun Ovitrap</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --navy: #0b1f3a;
+        --teal: #0e8c96;
+        --mist: #f3f6fb;
+        --muted: #5c6b82;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        background:
+          radial-gradient(900px 420px at 10% -10%, #1a4b86 0%, transparent 55%),
+          var(--navy);
+        color: white;
+      }
+      main {
+        width: min(920px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 48px 0 64px;
+      }
+      .mark {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: var(--teal);
+        font-weight: 800;
+        font-size: 22px;
+      }
+      h1 {
+        margin: 18px 0 8px;
+        font-size: clamp(36px, 6vw, 56px);
+        letter-spacing: -0.04em;
+      }
+      .lead {
+        max-width: 58ch;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 18px;
+        line-height: 1.5;
+      }
+      .panel {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 20px;
+      }
+      .card {
+        background: white;
+        color: var(--navy);
+        border-radius: 28px;
+        padding: 28px;
+      }
+      .card h2 { margin: 0 0 8px; font-size: 22px; }
+      .card p { margin: 0; color: var(--muted); line-height: 1.5; }
+      a.download {
+        display: inline-flex;
+        margin-top: 22px;
+        background: var(--teal);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 14px 18px;
+        border-radius: 14px;
+      }
+      ol { margin: 18px 0 0; padding-left: 18px; color: var(--muted); }
+      li + li { margin-top: 8px; }
+      .qr {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        align-content: start;
+      }
+      #qr {
+        width: 220px;
+        height: 220px;
+        margin: 12px 0 8px;
+        background: white;
+      }
+      #qr img, #qr canvas { width: 220px; height: 220px; }
+      .file {
+        font-size: 13px;
+        color: var(--muted);
+        word-break: break-all;
+      }
+      @media (max-width: 760px) {
+        .panel { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark">Ov</div>
+      <h1>Ovitrap Klang</h1>
+      <p class="lead">
+        Imbas kod QR dengan telefon Android, atau tekan butang muat turun, untuk
+        memasang aplikasi pemantauan ovitrap.
+      </p>
+      <section class="panel">
+        <article class="card">
+          <h2>Muat turun aplikasi</h2>
+          <p>
+            Fail ini ialah pakej Android. Selepas muat turun, buka fail tersebut
+            dan benarkan pemasangan daripada pelayar jika telefon meminta.
+          </p>
+          <a class="download" id="download" href="downloads/ovitrap.apk">
+            Muat turun APK
+          </a>
+          <ol>
+            <li>Imbas QR atau buka pautan muat turun pada telefon.</li>
+            <li>Buka fail <strong>ovitrap.apk</strong>.</li>
+            <li>Pilih Pasang, kemudian buka aplikasi Ovitrap.</li>
+          </ol>
+        </article>
+        <article class="card qr">
+          <h2>Imbas untuk muat turun</h2>
+          <div id="qr"></div>
+          <p class="file" id="link"></p>
+        </article>
+      </section>
+    </main>
+    <script src="qrcode.min.js"></script>
+    <script>
+      const url = "https://github.com/naqiuddinsancon-arch/ovitrap-app/releases/download/v1.0.0/ovitrap.apk";
+      document.getElementById("download").href = url;
+      document.getElementById("link").textContent = url;
+      new QRCode(document.getElementById("qr"), {
+        text: url,
+        width: 220,
+        height: 220,
+        colorDark: "#0B1F3A",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M,
+      });
+    </script>
+  </body>
+</html>
